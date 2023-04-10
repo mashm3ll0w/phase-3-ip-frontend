@@ -9,7 +9,6 @@ body {
 }
 
 /* NavBar */
-
 #site-navbar {
   background-color: maroon;
 }
@@ -29,7 +28,6 @@ body {
 .navbar-brand,
 .nav-link {
   color: #ffff;
-  /* font-size: 30px; */
   margin: 30px 15px;
 }
 
@@ -42,15 +40,6 @@ body {
 
 /* Main Content */
 .main-content {
-  width: 40%;
-  /* border: solid 1px maroon; */
-  /* border-radius: 15px; */
+  width: 50%;
   margin-top: 100px;
-  /* padding: 20px; */
 }
-
-/* .row-headings {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-} */

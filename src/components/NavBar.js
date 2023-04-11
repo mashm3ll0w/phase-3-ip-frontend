@@ -5,17 +5,12 @@ export default function NavBar() {
     <div id="site-navbar">
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid nav-container">
-          <p className="navbar-brand">MovCon System</p>
+          <NavLink className="navbar-brand" to="/">MovCon System</NavLink>
           <div
             className="collapse navbar-collapse justify-content-end"
             id="navbarNav"
           >
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/">
-                  Home
-                </NavLink>
-              </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/routes">
                   Routes

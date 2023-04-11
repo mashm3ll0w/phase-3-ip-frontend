@@ -1,6 +1,7 @@
 import NavBar from "./NavBar";
 import HomePage from "./HomePage";
 import { Routes, Route } from "react-router-dom";
+import RouteDetails from "./RouteDetails";
 
 export default function App() {
   return (
@@ -8,6 +9,7 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/routes/:id" element={<RouteDetails />} />
       </Routes>
     </div>
   );

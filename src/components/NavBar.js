@@ -12,7 +12,7 @@ export default function NavBar() {
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/routes">
+                <NavLink className="nav-link" to="/">
                   Routes
                 </NavLink>
               </li>

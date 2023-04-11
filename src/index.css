@@ -43,3 +43,28 @@ body {
   width: 50%;
   margin-top: 100px;
 }
+
+/* Route Details */
+.route-details {
+  width: 50%;
+  margin: 100px auto 10px;
+}
+
+.route-details > h1 {
+  text-align: center;
+}
+
+.route-particulars {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gp-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gp-item > p {
+    margin-top: 0;
+    margin-bottom: 0;
+}

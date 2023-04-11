@@ -5,6 +5,7 @@ import RouteDetails from "./RouteDetails";
 import Vehicles from "./Vehicles";
 import Passengers from "./Passengers";
 import Drivers from "./Drivers";
+import VehicleDetails from "./VehicleDetails";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/routes/:id" element={<RouteDetails />} />
         <Route path="/vehicles" element={<Vehicles />} />
+        <Route path="/vehicles/:id" element={<VehicleDetails />} />
         <Route path="/passengers" element={<Passengers />} />
         <Route path="/drivers" element={<Drivers />}/>
       </Routes>

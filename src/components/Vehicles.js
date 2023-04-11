@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Vehicles() {
   const [vehicles, setVehicles] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:9292/vehicles")
       .then((res) => res.json())
-      .then((data) =>setVehicles(data))
+      .then((data) => setVehicles(data))
       .catch((err) => console.log("Error: ", err.message));
   }, []);
 
@@ -24,9 +26,11 @@ export default function Vehicles() {
           </tr>
         </thead>
         <tbody>
-          {vehicles.map((vehicle) => {
-            return (
-              <tr>
+          {vehicles && vehicles.map((vehicle) => (
+              <tr
+                key={vehicle.id}
+                onClick={() => navigate(`/vehicles/${vehicle.id}`)}
+              >
                 <th scope="row">{vehicle.id}</th>
                 <td>{vehicle.vehicle_type}</td>
                 <td>{vehicle.registration}</td>
@@ -34,8 +38,7 @@ export default function Vehicles() {
                 <td>{vehicle.route.origin}</td>
                 <td>{vehicle.route.destination}</td>
               </tr>
-            );
-          })}
+          ))}
         </tbody>
       </table>
     </div>

@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Route_({route}) {
-    const navigate = useNavigate()
+export default function Route_({ route }) {
+  const navigate = useNavigate();
+
+  function handleClick(id) {
+    navigate(`/routes/${id}`);
+  }
 
   return (
     <>
-      <tr onClick={() => navigate(`/routes/${route.id}`)}>
+      <tr onClick={() => handleClick(route.id)}>
         <th scope="row">{route.id}</th>
         <td>{route.origin}</td>
         <td>{route.destination}</td>

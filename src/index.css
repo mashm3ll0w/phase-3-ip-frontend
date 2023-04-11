@@ -65,6 +65,10 @@ body {
 }
 
 .gp-item > p {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.route-card {
+  margin: 20px auto;
 }

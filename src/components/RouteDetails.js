@@ -1,9 +1,10 @@
+import React from 'react'
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import RouteDetailSpec from "./RouteDetailSpec"
 
 export default function RouteDetails() {
-  const [routeDetails, setRouteDetails] = useState("");
+  const [routeDetails, setRouteDetails] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -12,6 +13,7 @@ export default function RouteDetails() {
       .then((data) => setRouteDetails(data))
       .catch((err) => console.log("Error: ", err.message));
   }, [id]);
+
 
   return (
     <div className="route-details">
@@ -39,7 +41,7 @@ export default function RouteDetails() {
       </div>
       <hr />
       <div className="container-fluid routes-container">
-        {routeDetails.vehicles.map(vehicle => <RouteDetailSpec key={vehicle.id} vehicle={vehicle}/>)}
+        {routeDetails.vehicles && routeDetails.vehicles.map( (vehicle) => <RouteDetailSpec key={vehicle.id} vehicle={vehicle}/>)}
       </div>
     </div>
   );

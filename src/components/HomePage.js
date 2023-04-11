@@ -8,9 +8,7 @@ export default function HomePage() {
     useEffect(() => {
         fetch("http://localhost:9292/routes")
         .then(res => res.json())
-        .then(data => {
-            setRoutes(data)
-        })
+        .then(data => setRoutes(data))
         .catch(err => console.log("Error: ", err.message))
     }, [])
 

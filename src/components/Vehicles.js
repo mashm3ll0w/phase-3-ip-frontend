@@ -1,5 +1,43 @@
-export default function Vehicles(){
-    return (
-        <h1>Vehicles</h1>
-    )
+import { useEffect, useState } from "react";
+
+export default function Vehicles() {
+  const [vehicles, setVehicles] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:9292/vehicles")
+      .then((res) => res.json())
+      .then((data) =>setVehicles(data))
+      .catch((err) => console.log("Error: ", err.message));
+  }, []);
+
+  return (
+    <div className="main-content container-fluid">
+      <table className="table border-danger table-hover table-striped-columns">
+        <thead className="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Vehicle Type</th>
+            <th scope="col">Registration No.</th>
+            <th scope="col">Capacity</th>
+            <th scope="col">Current Location</th>
+            <th scope="col">Destination</th>
+          </tr>
+        </thead>
+        <tbody>
+          {vehicles.map((vehicle) => {
+            return (
+              <tr>
+                <th scope="row">{vehicle.id}</th>
+                <td>{vehicle.vehicle_type}</td>
+                <td>{vehicle.registration}</td>
+                <td>{vehicle.capacity}</td>
+                <td>{vehicle.route.origin}</td>
+                <td>{vehicle.route.destination}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }

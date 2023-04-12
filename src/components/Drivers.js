@@ -1,18 +1,18 @@
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react";
 
 export default function Drivers() {
+  const [drivers, setDrivers] = useState([]);
 
-    const [drivers, setDrivers] = useState([])
-
-    useEffect(() => {
-        fetch("http://localhost:9292/drivers")
-        .then(res => res.json())
-        .then(data => setDrivers(data))
-        .catch(err => console.log("Error :", err.message))
-    }, [])
+  useEffect(() => {
+    fetch("http://localhost:9292/drivers")
+      .then((res) => res.json())
+      .then((data) => setDrivers(data))
+      .catch((err) => console.log("Error :", err.message));
+  }, []);
 
   return (
     <div className="main-content container-fluid">
+      <h1>Drivers</h1>
       <table className="table border-danger table-hover table-striped-columns">
         <thead className="table-dark">
           <tr>
@@ -25,15 +25,16 @@ export default function Drivers() {
           </tr>
         </thead>
         <tbody>
-            {drivers.map(driver => (
-          <tr key={driver.id}>
-            <th scope="row">{driver.id}</th>
-            <td>{driver.name}</td>
-            <td>{driver.vehicles[0].vehicle_type}</td>
-            <td>{driver.vehicles[0].registration}</td>
-            <td>{driver.routes[0].origin}</td>
-            <td>{driver.routes[0].destination}</td>
-          </tr>
+          {drivers &&
+            drivers.map((driver) => (
+              <tr key={driver.id}>
+                <th scope="row">{driver.id}</th>
+                <td>{driver.name}</td>
+                <td>{driver.vehicles[0].vehicle_type}</td>
+                <td>{driver.vehicles[0].registration}</td>
+                <td>{driver.routes[0].origin}</td>
+                <td>{driver.routes[0].destination}</td>
+              </tr>
             ))}
         </tbody>
       </table>

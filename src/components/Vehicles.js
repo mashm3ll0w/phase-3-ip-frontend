@@ -14,6 +14,7 @@ export default function Vehicles() {
 
   return (
     <div className="main-content container-fluid">
+      <h1>Vehicles</h1>
       <table className="table border-danger table-hover table-striped-columns">
         <thead className="table-dark">
           <tr>
@@ -26,7 +27,8 @@ export default function Vehicles() {
           </tr>
         </thead>
         <tbody>
-          {vehicles && vehicles.map((vehicle) => (
+          {vehicles &&
+            vehicles.map((vehicle) => (
               <tr
                 key={vehicle.id}
                 onClick={() => navigate(`/vehicles/${vehicle.id}`)}
@@ -38,7 +40,7 @@ export default function Vehicles() {
                 <td>{vehicle.route.origin}</td>
                 <td>{vehicle.route.destination}</td>
               </tr>
-          ))}
+            ))}
         </tbody>
       </table>
     </div>

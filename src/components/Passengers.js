@@ -8,7 +8,7 @@ export default function Passengers() {
       .then((res) => res.json())
       .then((data) => setPassengers(data))
       .catch((err) => console.log("Error :", err.message));
-  });
+  }, []);
 
   return (
     <div className="main-content container-fluid">

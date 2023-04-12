@@ -36,7 +36,7 @@ export default function Vehicles() {
                 <th scope="row">{vehicle.id}</th>
                 <td>{vehicle.vehicle_type}</td>
                 <td>{vehicle.registration}</td>
-                <td>{vehicle.capacity}</td>
+                 <td>{vehicle.capacity}</td>
                 <td>{vehicle.route.origin}</td>
                 <td>{vehicle.route.destination}</td>
               </tr>

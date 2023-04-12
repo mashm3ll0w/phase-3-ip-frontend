@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function Passengers() {
-  const [passengers, setPassengers] = useState([]);
+  const [passengers, setPassengers] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:9292/passengers")

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function Drivers() {
-  const [drivers, setDrivers] = useState([]);
+  const [drivers, setDrivers] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:9292/drivers")

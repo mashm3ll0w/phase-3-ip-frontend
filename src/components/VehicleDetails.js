@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function VehicleDetails() {
-  let [vehicle, setVehicle] = useState([]);
+  let [vehicle, setVehicle] = useState(null);
   let { id } = useParams();
 
   useEffect(() => {
@@ -15,6 +15,7 @@ export default function VehicleDetails() {
   if (vehicle == null){
     return 'Loading...';
   }
+
   return (
     <div className="main-content container-fluid">
       <h2>Vehicle Details</h2>
@@ -48,9 +49,9 @@ export default function VehicleDetails() {
         </thead>
         <tbody>
           <tr>
-            <td>{new Date(vehicle.route.created_at)}</td>
+            <td>{new Date(vehicle.route.created_at).toDateString()}</td>
             <td>{vehicle.route.origin}</td>
-            <td>{vehicle.route.origin}</td>
+            <td>{vehicle.route.destination}</td>
             <td>{vehicle.driver.name}</td>
             <td>{vehicle.passengers.length} Passengers</td>
           </tr>

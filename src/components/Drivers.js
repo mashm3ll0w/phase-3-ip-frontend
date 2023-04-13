@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import Search from "./Search";
 
 export default function Drivers() {
   const [drivers, setDrivers] = useState(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:9292/drivers")
@@ -10,9 +12,22 @@ export default function Drivers() {
       .catch((err) => console.log("Error :", err.message));
   }, []);
 
+  const filteredDrivers =
+    drivers &&
+    drivers.filter((passenger) => {
+      if (search !== "") {
+        return passenger.name.toLowerCase().includes(search.toLowerCase());
+      } else {
+        return passenger;
+      }
+    });
+
   return (
-    <div className="main-content container-fluid" style={{"width": "20%"}}>
-      <h1>Drivers</h1>
+    <div className="main-content container-fluid" style={{ width: "20%" }}>
+      <div className="search-container">
+        <h1>Drivers</h1>
+        <Search search={search} setSearch={setSearch} />
+      </div>
       <table className="table border-danger table-hover table-striped-columns">
         <thead className="table-dark">
           <tr>
@@ -25,8 +40,8 @@ export default function Drivers() {
           </tr>
         </thead>
         <tbody>
-          {drivers &&
-            drivers.map((driver) => (
+          {filteredDrivers &&
+            filteredDrivers.map((driver) => (
               <tr key={driver.id}>
                 <th scope="row">{driver.id}</th>
                 <td>{driver.name}</td>

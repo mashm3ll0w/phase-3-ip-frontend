@@ -6,6 +6,7 @@ import Vehicles from "./Vehicles";
 import Passengers from "./Passengers";
 import Drivers from "./Drivers";
 import VehicleDetails from "./VehicleDetails";
+import CreateRoute from "./CreateRoute";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/routes/:id" element={<RouteDetails />} />
+        <Route path="/routes/new" element={<CreateRoute />} />
         <Route path="/vehicles" element={<Vehicles />} />
         <Route path="/vehicles/:id" element={<VehicleDetails />} />
         <Route path="/passengers" element={<Passengers />} />

@@ -5,26 +5,29 @@ export default function CreateRoute() {
   const [formData, setFormData] = useState({
     origin: "",
     destination: "",
-    vehicle_id: "",
-    driver_id: "",
+    vehicle_type: "",
+    registration: "",
+    capacity: "",
+    driver: "",
+    passengers: ""
   });
-  const [drivers, setDrivers] = useState(null);
-  const [vehicles, setVehilces] = useState(null);
-  const navigate = useNavigate()
+//   const [drivers, setDrivers] = useState(null);
+//   const [vehicles, setVehilces] = useState(null);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("http://localhost:9292/drivers")
-      .then((res) => res.json())
-      .then((data) => setDrivers(data))
-      .catch((err) => console.log("Error: ", err.message));
-  }, []);
+//   useEffect(() => {
+//     fetch("http://localhost:9292/drivers")
+//       .then((res) => res.json())
+//       .then((data) => setDrivers(data))
+//       .catch((err) => console.log("Error: ", err.message));
+//   }, []);
 
-  useEffect(() => {
-    fetch("http://localhost:9292/vehicles")
-      .then((res) => res.json())
-      .then((data) => setVehilces(data))
-      .catch((err) => console.log("Error: ", err.message));
-  }, []);
+//   useEffect(() => {
+//     fetch("http://localhost:9292/vehicles")
+//       .then((res) => res.json())
+//       .then((data) => setVehilces(data))
+//       .catch((err) => console.log("Error: ", err.message));
+//   }, []);
 
   function handleChange(e) {
     const name = e.target.name;
@@ -36,25 +39,25 @@ export default function CreateRoute() {
     });
   }
 
-  function handleSubmit(e){
-    e.preventDefault()
+  function handleSubmit(e) {
+    e.preventDefault();
     fetch("http://localhost:9292/routes", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            // "Accept" : "application/json",
-        },
-        body: JSON.stringify(formData)
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept" : "application/json",
+      },
+      body: JSON.stringify(formData),
     })
-    .then(res => res.json())
-    .then(data => navigate(`/routes/${data.id}`))
-    .catch(err => console.log("Error: ", err.message))
+      .then((res) => res.json())
+      .then((data) => navigate(`/routes/${data.id}`))
+      .catch((err) => console.log("Error: ", err.message));
   }
 
   return (
     <>
       <div className="main-content container-fluid">
-        <h2>Create New Route</h2>
+        <h3>Route Details</h3>
         <form className="row g-3" onSubmit={handleSubmit}>
           <div className="col-md-6">
             <label for="inputOrigin" className="form-label">
@@ -80,11 +83,78 @@ export default function CreateRoute() {
               onChange={handleChange}
             />
           </div>
-          <div className="col-md-6">
+          <h3>Vehicle Details</h3>
+          <div className="col-md-4">
+            <label for="inputVehType" className="form-label">
+              Vehicle Type
+            </label>
+            <input
+              name="vehicle_type"
+              type="text"
+              className="form-control"
+              id="inputVehType"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-md-4">
+            <label for="inputReg" className="form-label">
+              Registration
+            </label>
+            <input
+              name="registration"
+              type="text"
+              className="form-control"
+              id="inputReg"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-md-4">
+            <label for="inputCapacity" className="form-label">
+              Capacity
+            </label>
+            <input
+              name="capacity"
+              type="number"
+              className="form-control"
+              id="inputCapacity"
+              onChange={handleChange}
+            />
+          </div>
+          <h3>Driver Details</h3>
+          <div className="col-md-4">
+            <label for="inputDriver" className="form-label">
+              Driver's Name
+            </label>
+            <input
+              name="driver"
+              type="text"
+              className="form-control"
+              id="inputDriver"
+              onChange={handleChange}
+            />
+          </div>
+          <h3>Passengers Details</h3>
+          <div className="col-md-12">
+            <div className="input-group">
+              <span className="input-group-text">Passenger Names'</span>
+              <textarea
+                className="form-control"
+                aria-label="With textarea"
+                name="passengers"
+                onChange={handleChange}
+              ></textarea>
+            </div>
+          </div>
+          {/* <div className="col-md-6">
             <label for="inputVehicle" className="form-label">
               Select Vehicle
             </label>
-            <select name="vehicle_id" id="inputVehicle" className="form-select" onChange={handleChange}>
+            <select
+              name="vehicle_id"
+              id="inputVehicle"
+              className="form-select"
+              onChange={handleChange}
+            >
               <option selected disabled>
                 Choose Vehicle...
               </option>
@@ -100,7 +170,12 @@ export default function CreateRoute() {
             <label for="inputDriver" className="form-label">
               Select Driver
             </label>
-            <select name="driver_id" id="inputDriver" className="form-select" onChange={handleChange}>
+            <select
+              name="driver_id"
+              id="inputDriver"
+              className="form-select"
+              onChange={handleChange}
+            >
               <option selected disabled>
                 Choose Driver...
               </option>
@@ -111,7 +186,7 @@ export default function CreateRoute() {
                   </option>
                 ))}
             </select>
-          </div>
+          </div> */}
           {/* <div className="col-md-6">
           <select
           className="form-select"

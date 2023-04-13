@@ -77,3 +77,13 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.filter-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.filter-container > input {
+    width: 170px;
+}

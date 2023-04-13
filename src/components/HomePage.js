@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Routes_ from "./Routes_";
+import Filter from "./Filter";
 
 export default function HomePage() {
   const [routes, setRoutes] = useState([]);
@@ -16,6 +17,9 @@ export default function HomePage() {
 
   const btnStyle = {
     "margin": "50px auto -45px",
+    "display": "flex",
+    "justify-content": "center",
+    "gap": "30px",
   }
 
 
@@ -30,6 +34,7 @@ export default function HomePage() {
         >
           NEW ROUTE
         </button>
+        <Filter />
       </div>
       <div className="main-content container-fluid">
         <h1>Routes</h1>

@@ -1,4 +1,8 @@
-export default function Search() {
+export default function Search({ search, setSearch }) {
+  function handleChange(e) {
+    let name = e.target.value;
+    setSearch(name);
+  }
 
   return (
     <div className="filter-container">
@@ -7,6 +11,7 @@ export default function Search() {
         type="text"
         name="name"
         placeholder="Search..."
+        onChange={handleChange}
       />
     </div>
   );

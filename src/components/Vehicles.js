@@ -4,6 +4,7 @@ import Search from "./Search";
 
 export default function Vehicles() {
   const [vehicles, setVehicles] = useState([]);
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,11 +14,23 @@ export default function Vehicles() {
       .catch((err) => console.log("Error: ", err.message));
   }, []);
 
+  const filteredVehicles =
+    vehicles &&
+    vehicles.filter((vehicle) => {
+      if (search !== "") {
+        return vehicle.vehicle_type
+          .toLowerCase()
+          .includes(search.toLowerCase());
+      } else {
+        return vehicle;
+      }
+    });
+
   return (
     <div className="main-content container-fluid">
       <div className="search-container">
         <h1>Vehicles</h1>
-        <Search />
+        <Search search={search} setSearch={setSearch} />
       </div>
       <table className="table border-danger table-hover table-striped-columns">
         <thead className="table-dark">
@@ -31,8 +44,8 @@ export default function Vehicles() {
           </tr>
         </thead>
         <tbody>
-          {vehicles &&
-            vehicles.map((vehicle) => (
+          {filteredVehicles &&
+            filteredVehicles.map((vehicle) => (
               <tr
                 key={vehicle.id}
                 onClick={() => navigate(`/vehicles/${vehicle.id}`)}

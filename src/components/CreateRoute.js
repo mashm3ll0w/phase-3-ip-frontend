@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function CreateRoute() {
   const [formData, setFormData] = useState({
     origin: "",
@@ -8,6 +10,7 @@ export default function CreateRoute() {
   });
   const [drivers, setDrivers] = useState(null);
   const [vehicles, setVehilces] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("http://localhost:9292/drivers")
@@ -35,7 +38,19 @@ export default function CreateRoute() {
 
   function handleSubmit(e){
     e.preventDefault()
-    console.log(formData)
+    fetch("http://localhost:9292/routes", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            // "Accept" : "application/json",
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+    })
+    .catch(err => console.log("Error: ", err.message))
   }
 
   return (

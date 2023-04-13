@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import Search from "./Search";
 
 export default function Passengers() {
   const [passengers, setPassengers] = useState(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:9292/passengers")
@@ -10,9 +12,22 @@ export default function Passengers() {
       .catch((err) => console.log("Error :", err.message));
   }, []);
 
+  const filteredPax =
+    passengers &&
+    passengers.filter((passenger) => {
+      if (search !== "") {
+        return passenger.name.toLowerCase().includes(search.toLowerCase());
+      } else {
+        return passenger;
+      }
+    });
+
   return (
     <div className="main-content container-fluid">
-      <h1>Passengers</h1>
+      <div className="search-container">
+        <h1>Passengers</h1>
+        <Search search={search} setSearch={setSearch} />
+      </div>
       <table className="table border-danger table-hover table-striped-columns">
         <thead className="table-dark">
           <tr>
@@ -26,8 +41,8 @@ export default function Passengers() {
           </tr>
         </thead>
         <tbody>
-          {passengers &&
-            passengers.map((passenger) => (
+          {filteredPax &&
+            filteredPax.map((passenger) => (
               <tr key={passenger.id}>
                 <th scope="row">{passenger.id}</th>
                 <td>{passenger.name}</td>

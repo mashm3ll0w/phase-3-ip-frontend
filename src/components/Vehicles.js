@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Search from "./Search";
 
 export default function Vehicles() {
   const [vehicles, setVehicles] = useState([]);
@@ -14,7 +15,10 @@ export default function Vehicles() {
 
   return (
     <div className="main-content container-fluid">
-      <h1>Vehicles</h1>
+      <div className="search-container">
+        <h1>Vehicles</h1>
+        <Search />
+      </div>
       <table className="table border-danger table-hover table-striped-columns">
         <thead className="table-dark">
           <tr>
@@ -36,7 +40,7 @@ export default function Vehicles() {
                 <th scope="row">{vehicle.id}</th>
                 <td>{vehicle.vehicle_type}</td>
                 <td>{vehicle.registration}</td>
-                 <td>{vehicle.capacity}</td>
+                <td>{vehicle.capacity}</td>
                 <td>{vehicle.route.origin}</td>
                 <td>{vehicle.route.destination}</td>
               </tr>

@@ -87,3 +87,14 @@ body {
 .filter-container > input {
   width: 170px;
 }
+
+.search-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  align-items: center;
+}
+
+.search-input {
+    height: 35px;
+}

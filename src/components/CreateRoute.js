@@ -47,9 +47,7 @@ export default function CreateRoute() {
         body: JSON.stringify(formData)
     })
     .then(res => res.json())
-    .then(data => {
-        console.log(data)
-    })
+    .then(data => navigate(`/routes/${data.id}`))
     .catch(err => console.log("Error: ", err.message))
   }
 

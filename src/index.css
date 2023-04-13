@@ -72,3 +72,8 @@ body {
 .route-card {
   margin: 20px auto;
 }
+
+.route-buttons {
+  display: flex;
+  justify-content: center;
+}

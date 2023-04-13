@@ -18,6 +18,9 @@ export default function RouteDetails() {
   return (
     <div className="route-details">
       <h1>Route Details</h1>
+      <div className="route-buttons">
+      <button type="button" class="btn btn-danger route-btn">DELETE ROUTE</button>
+      </div>
       <hr />
       <div className="route-particulars">
         <h4>

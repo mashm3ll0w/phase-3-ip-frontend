@@ -1,8 +1,18 @@
-export default function Filter() {
+export default function Filter({filter, setFilter}) {
+
+    function handleChange(e) {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        setFilter({
+          ...filter,
+          [name]: value,
+        });
+      }
 
   return (
     <div className="filter-container">
-      <select id="filterSelect" className="form-select">
+      <select name="place" id="filterSelect" className="form-select" onChange={handleChange}>
         <option selected disabled>
           Filter by...
         </option>
@@ -13,8 +23,9 @@ export default function Filter() {
       <input
         className="form-control"
         type="text"
-        name="search"
+        name="name"
         placeholder="Search..."
+        onChange={handleChange}
       />
     </div>
   );

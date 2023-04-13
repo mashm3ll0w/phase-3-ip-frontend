@@ -79,11 +79,11 @@ body {
 }
 
 .filter-container {
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 .filter-container > input {
-    width: 170px;
+  width: 170px;
 }

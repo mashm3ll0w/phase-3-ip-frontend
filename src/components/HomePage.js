@@ -6,6 +6,10 @@ import Filter from "./Filter";
 
 export default function HomePage() {
   const [routes, setRoutes] = useState([]);
+  const [filter, setFilter] = useState({
+    place: "",
+    name: ""
+  })
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -22,6 +26,17 @@ export default function HomePage() {
     "gap": "30px",
   }
 
+  const filteredRoutes = routes.filter(route => {
+    if (filter.place === ""){
+        return route
+    }
+    else if (filter.place === "origin"){
+        return route.origin.toLowerCase().includes(filter.name.toLowerCase())
+    }
+    else if (filter.place === "destination"){
+       return route.destination.toLowerCase().includes(filter.name.toLowerCase())
+    }
+  })
 
   return (
     <>
@@ -34,11 +49,11 @@ export default function HomePage() {
         >
           NEW ROUTE
         </button>
-        <Filter />
+        <Filter filter={filter} setFilter={setFilter}/>
       </div>
       <div className="main-content container-fluid">
         <h1>Routes</h1>
-        <Routes_ routes={routes} />
+        <Routes_ routes={filteredRoutes}/>
       </div>
     </>
   );

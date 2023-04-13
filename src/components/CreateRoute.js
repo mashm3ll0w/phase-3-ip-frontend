@@ -118,7 +118,7 @@ export default function CreateRoute() {
               onChange={handleChange}
             />
           </div>
-          <h3>Passengers Details</h3>
+          <h3>Passengers Details <span style={{"font-size": "15px"}}>(***append <strong>-escort</strong> and <strong>-senior</strong> for the escort and senior passengers)</span></h3>
           <div className="col-md-12">
             <div className="input-group">
               <span className="input-group-text">Passenger Names'</span>
@@ -127,6 +127,7 @@ export default function CreateRoute() {
                 aria-label="With textarea"
                 name="passengers"
                 onChange={handleChange}
+                placeholder="john-escort,jack-senior,kyle,mark,lola..."
               ></textarea>
             </div>
           </div>

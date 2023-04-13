@@ -24,11 +24,11 @@ export default function RouteDetailSpec({ vehicle }) {
               </li>
               <li className="list-group-item gp-item">
                 <p>Senior Passenger:</p>
-                <p><strong>{seniorPassenger.name}</strong></p>
+                <p><strong>{!seniorPassenger ? "No Senior Passenger" : seniorPassenger.name}</strong></p>
               </li>
               <li className="list-group-item gp-item">
                 <p>Escort:</p>
-                <p><strong>{escort.name}</strong></p>
+                <p><strong>{!escort ? "No Escort" : escort.name}</strong></p>
               </li>
             </ul>
           </div>

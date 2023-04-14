@@ -9,14 +9,14 @@ export default function RouteDetails() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:9292/routes/${id}`)
+    fetch(`https://movcon-app-api.onrender.com/routes/${id}`)
       .then((res) => res.json())
       .then((data) => setRouteDetails(data))
       .catch((err) => console.log("Error: ", err.message));
   }, [id]);
 
   function handleDelete(id){
-    fetch(`http://localhost:9292/routes/${id}`, {
+    fetch(`https://movcon-app-api.onrender.com/routes/${id}`, {
         method: "DELETE"
     })
       .then((res) => res.json())

@@ -13,7 +13,7 @@ export default function HomePage() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch("http://localhost:9292/routes")
+    fetch("https://movcon-app-api.onrender.com/routes")
       .then((res) => res.json())
       .then((data) => setRoutes(data))
       .catch((err) => console.log("Error: ", err.message));

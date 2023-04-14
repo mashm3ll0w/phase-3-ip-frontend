@@ -26,7 +26,7 @@ export default function CreateRoute() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://localhost:9292/routes", {
+    fetch("https://movcon-app-api.onrender.com/routes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

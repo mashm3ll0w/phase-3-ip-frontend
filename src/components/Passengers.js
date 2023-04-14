@@ -6,7 +6,7 @@ export default function Passengers() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:9292/passengers")
+    fetch("https://movcon-app-api.onrender.com/passengers")
       .then((res) => res.json())
       .then((data) => setPassengers(data))
       .catch((err) => console.log("Error :", err.message));

@@ -6,7 +6,7 @@ export default function VehicleDetails() {
   let { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:9292/vehicles/${id}`)
+    fetch(`https://movcon-app-api.onrender.com/vehicles/${id}`)
       .then((res) => res.json())
       .then((data) => setVehicle(data))
       .catch((err) => console.log("Error: ", err.message));

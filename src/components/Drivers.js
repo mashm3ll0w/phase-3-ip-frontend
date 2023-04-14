@@ -6,7 +6,7 @@ export default function Drivers() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:9292/drivers")
+    fetch("https://movcon-app-api.onrender.com/drivers")
       .then((res) => res.json())
       .then((data) => setDrivers(data))
       .catch((err) => console.log("Error :", err.message));

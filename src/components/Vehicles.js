@@ -8,7 +8,7 @@ export default function Vehicles() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:9292/vehicles")
+    fetch("https://movcon-app-api.onrender.com/vehicles")
       .then((res) => res.json())
       .then((data) => setVehicles(data))
       .catch((err) => console.log("Error: ", err.message));
